@@ -56,15 +56,14 @@ public:
 class Database : public Observer {
     std::vector<Table> tables;
     std::unordered_map<std::string, size_t> table_index_map;
-
     static Database* instance;
+    
     Database();
 
 public:
     static Database* get_instance();
     Table* get_table_by_name(std::string_view name);
     std::vector<Table>& get_tables() noexcept;
-
     void create_table(const std::string& table_name, const std::vector<std::string>& headers, const std::vector<std::string>& data_types);
     void delete_table(std::string_view table_name, std::string_view row_idx_str);
     Table* read_table(std::string_view table_name, const std::vector<std::string>& headers, const std::vector<std::string>& where, const std::vector<std::string>& orderby);

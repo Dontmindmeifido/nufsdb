@@ -5,14 +5,18 @@
 
 Cell::Cell() noexcept : value(""), type(DataType::VARCHAR) {}
 
-Cell::Cell(std::string val) noexcept
-    : value(std::move(val)), type(Primitive::infer_type(value)) {}
+Cell::Cell(std::string val) noexcept : value(std::move(val)), type(Primitive::infer_type(value)) {}
 
-Cell::Cell(std::string val, DataType explicit_type) noexcept
-    : value(std::move(val)), type(explicit_type) {}
+Cell::Cell(std::string val, DataType explicit_type) noexcept : value(std::move(val)), type(explicit_type) {}
 
-const std::string& Cell::get_value() const noexcept { return value; }
-DataType Cell::get_type() const noexcept { return type; }
+const std::string& Cell::get_value() const noexcept { 
+    return value; 
+}
+
+DataType Cell::get_type() const noexcept { 
+    return type; 
+}
+
 std::string_view Cell::get_type_name() const noexcept {
     return Primitive::get_type_name_str(type);
 }
@@ -24,21 +28,45 @@ Row::Row(const std::vector<std::string>& raw_cells) {
     }
 }
 
-const std::vector<Cell>& Row::get_cells() const noexcept { return cells; }
-std::vector<Cell>& Row::get_cells() noexcept { return cells; }
+const std::vector<Cell>& Row::get_cells() const noexcept { 
+    return cells; 
+}
 
-Table::Table(const std::vector<std::string>& header, const std::vector<std::string>& data_types, std::string table_name)
-    : name(std::move(table_name)), meta(header, data_types) {
+std::vector<Cell>& Row::get_cells() noexcept { 
+    return cells; 
+}
+
+Table::Table(const std::vector<std::string>& header, const std::vector<std::string>& data_types, std::string table_name) : name(std::move(table_name)), meta(header, data_types) {
     rows.emplace_back(header);
 }
 
-const std::string& Table::get_name() const noexcept { return name; }
-void Table::set_name(std::string new_name) { name = std::move(new_name); }
-std::vector<Row>& Table::get_rows() noexcept { return rows; }
-const std::vector<Row>& Table::get_rows() const noexcept { return rows; }
-void Table::set_rows(std::vector<Row> new_rows) { rows = std::move(new_rows); }
-Meta& Table::get_meta() noexcept { return meta; }
-const Meta& Table::get_meta() const noexcept { return meta; }
+const std::string& Table::get_name() const noexcept { 
+    return name; 
+}
+
+void Table::set_name(std::string new_name) { 
+    name = std::move(new_name); 
+}
+
+std::vector<Row>& Table::get_rows() noexcept { 
+    return rows; 
+}
+
+const std::vector<Row>& Table::get_rows() const noexcept { 
+    return rows; 
+}
+
+void Table::set_rows(std::vector<Row> new_rows) { 
+    rows = std::move(new_rows); 
+}
+
+Meta& Table::get_meta() noexcept { 
+    return meta; 
+}
+
+const Meta& Table::get_meta() const noexcept { 
+    return meta; 
+}
 
 Database* Database::instance = nullptr;
 

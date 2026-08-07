@@ -1,15 +1,13 @@
 #include "interpreter.h"
 #include <iostream>
 
-Interpreter::Interpreter()
-    : dfa_create(2, {2, 1, 4, 0, 4, 3, 4, 4, 4, 4}, "in", 1),
-      dfa_read(4, {1, 6, 6, 0, 6, 6, 6, 2, 6, 3, 4, 6, 6, 6, 6, 5, 6, 6, 6, 5, 6, 3, 4, 5, 6, 6, 6, 6}, "in", 3),
-      dfa_insert(2, {1, 0, 3, 2, 3, 3, 3, 3}, "in", 1),
-      dfa_update(2, {6, 1, 6, 2, 6, 3, 4, 6, 6, 5, 6, 6}, "in", 1),
-      dfa_delete(2, {1, 0, 3, 2, 3, 3, 3, 3}, "in", 1),
-      dfa_union(2, {1, 0, 3, 2, 3, 3, 3, 3}, "in", 1),
-      dfa_command(1, {1, 2, 3, 3}, "", 0) {
-
+Interpreter::Interpreter(): dfa_create(2, {2, 1, 4, 0, 4, 3, 4, 4, 4, 4}, "in", 1),
+                            dfa_read(4, {1, 6, 6, 0, 6, 6, 6, 2, 6, 3, 4, 6, 6, 6, 6, 5, 6, 6, 6, 5, 6, 3, 4, 5, 6, 6, 6, 6}, "in", 3),
+                            dfa_insert(2, {1, 0, 3, 2, 3, 3, 3, 3}, "in", 1),
+                            dfa_update(2, {6, 1, 6, 2, 6, 3, 4, 6, 6, 5, 6, 6}, "in", 1),
+                            dfa_delete(2, {1, 0, 3, 2, 3, 3, 3, 3}, "in", 1),
+                            dfa_union(2, {1, 0, 3, 2, 3, 3, 3, 3}, "in", 1),
+                            dfa_command(1, {1, 2, 3, 3}, "", 0) {
     action_dispatch_map = {
         {"create", ActionType::CREATE},
         {"read",   ActionType::READ},

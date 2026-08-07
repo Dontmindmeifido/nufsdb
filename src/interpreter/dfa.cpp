@@ -1,11 +1,7 @@
 #include "dfa.h"
 #include <algorithm>
 
-Dfa::Dfa(int alpha_size, 
-         std::vector<int> transition_table, 
-         std::string_view mapped_chars, 
-         int default_token_idx) noexcept
-    : transitions(std::move(transition_table)), alphabet_size(alpha_size) {
+Dfa::Dfa(int alpha_size, std::vector<int> transition_table, std::string_view mapped_chars, int default_token_idx) noexcept : transitions(std::move(transition_table)), alphabet_size(alpha_size) {
     char_to_alphabet.fill(default_token_idx);
     for (size_t i = 0; i < mapped_chars.size(); ++i) {
         unsigned char chr = static_cast<unsigned char>(mapped_chars[i]);

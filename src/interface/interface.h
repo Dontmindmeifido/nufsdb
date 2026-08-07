@@ -17,6 +17,10 @@ class Interface {
     int selected_table{-1};
 
     Interface() = default;
+    Interface(const Interface&) = delete;
+    Interface& operator=(const Interface&) = delete;
+    Interface(Interface&&) = delete;
+    Interface& operator=(Interface&&) = delete;
     ~Interface();
 
     void render_database_window() noexcept;
@@ -25,11 +29,6 @@ class Interface {
     void render_table_view(const Table& table, const char* table_id) noexcept;
 
 public:
-    Interface(const Interface&) = delete;
-    Interface& operator=(const Interface&) = delete;
-    Interface(Interface&&) = delete;
-    Interface& operator=(Interface&&) = delete;
-
     static Interface* get_instance() noexcept;
     GLFWwindow* init_window();
     void render(GLFWwindow* window);

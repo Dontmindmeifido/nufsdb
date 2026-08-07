@@ -4,7 +4,8 @@
 #include <unordered_map>
 #include "datatype.h"
 
-struct Meta {
+class Meta {
+public:
     std::vector<DataType> data_types;
     std::vector<std::string> raw_type_names;
     std::unordered_map<std::string, size_t> column_index_map;

@@ -18,7 +18,6 @@ class Manager {
 
 public:
     static Manager* get_instance() noexcept;
-
     bool get_database(Database* database, std::string_view file_name, std::string_view password);
     void save_database(Database* database, std::string_view file_name, std::string_view password);
 };
